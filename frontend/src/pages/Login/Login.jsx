@@ -47,7 +47,9 @@ const Login = () => {
         />
         <button type="submit">Se connecter</button>
         {message && <p className="message">{message}</p>}
+        <p>if you don't have an account <a href="/signup">Signup</a></p>
       </form>
+      
     </div>
   );
 };

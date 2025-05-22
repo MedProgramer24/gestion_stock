@@ -52,6 +52,7 @@ const Signup = () => {
         />
         <button type="submit">S'inscrire</button>
         {message && <p className="message">{message}</p>}
+        <p>you have already an account <a href="/Login">Login</a></p>
       </form>
     </div>
   );
