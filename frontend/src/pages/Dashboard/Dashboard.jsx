@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import axios from 'axios';
 import { 
   LayoutDashboard, 
   Package, 
@@ -11,16 +11,26 @@ import {
   LogOut,
   Search,
   Calendar,
-  Grid3X3,
   FileText,
-  Hand,
-  ShoppingBag
+  
 } from 'lucide-react';
 import './Dashboard.css';
 import DashboardComponent from '../../components/Dashboard/DashboardComponent';
 
 const Dashboard = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+   const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    // Replace '/api/user' with your actual endpoint
+    axios.get('http://localhost:8000/api/user')
+      .then(response => {
+        setUserName(response.data.name);
+      })
+      .catch(error => {
+        console.error('Failed to fetch user data:', error);
+      });
+  }, []);
 
  
   
@@ -79,7 +89,7 @@ const Dashboard = () => {
           <div className="header-content">
             <div>
               <h1 className="header-title">
-                Bienvenue <span className="name">Naimaa</span>
+                Bienvenue <span className="name">Mohamed</span>
               </h1>
             </div>
             <div className="header-actions">

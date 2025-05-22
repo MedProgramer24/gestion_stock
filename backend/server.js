@@ -11,6 +11,14 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+// Example in Node.js (Express)
+app.get('/api/user', (req, res) => {
+  const user = {
+    name: 'mohamed' // Example fetched from DB
+  };
+  res.json(user);
+});
+
 
 app.use("/api/auth", require("./routes/authRoutes"));
 
