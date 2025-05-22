@@ -1,29 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { 
-  LayoutDashboard, 
-  Package, 
-  Tags, 
-  Building2, 
-  Users, 
-  ShoppingCart, 
-  MessageSquare, 
+import {
+  LayoutDashboard,
+  Package,
+  Tags,
+  Building2,
+  Users,
+  ShoppingCart,
+  MessageSquare,
   LogOut,
   Search,
   Calendar,
-  FileText,
-  
+  FileText
 } from 'lucide-react';
 import './Dashboard.css';
 import DashboardComponent from '../../components/Dashboard/DashboardComponent';
 
 const Dashboard = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-   const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('');
+  const [selectedView, setSelectedView] = useState('Dashboard');
 
   useEffect(() => {
-    // Replace '/api/user' with your actual endpoint
-    axios.get('http://localhost:8000/api/user')
+    axios.get('http://localhost:8000/api/user', { withCredentials: true })
       .then(response => {
         setUserName(response.data.name);
       })
@@ -32,11 +31,8 @@ const Dashboard = () => {
       });
   }, []);
 
- 
-  
-
   const sidebarItems = [
-    { icon: LayoutDashboard, label: 'Dashboard', active: true },
+    { icon: LayoutDashboard, label: 'Dashboard' },
     { icon: Package, label: 'Stock' },
     { icon: Tags, label: 'Gestion Catégories' },
     { icon: Building2, label: 'Gestion Départements' },
@@ -55,11 +51,38 @@ const Dashboard = () => {
     });
   };
 
+  const renderContent = () => {
+    switch (selectedView) {
+      case 'Dashboard':
+        return <DashboardComponent />;
+      case 'Stock':
+        return <div>Contenu de Stock</div>;
+      case 'Gestion Catégories':
+        return <div>Contenu de Gestion Catégories</div>;
+      case 'Gestion Départements':
+        return <div>Contenu de Gestion Départements</div>;
+      case 'Gestion utilisateurs':
+        return <div>Contenu de Gestion utilisateurs</div>;
+      case 'Demandes':
+        return <div>Contenu de Demandes</div>;
+      case 'Commandes':
+        return <div>Contenu de Commandes</div>;
+      case 'Réclamations':
+        return <div>Contenu de Réclamations</div>;
+      case 'Déconnexion':
+        // Clear session/localStorage and redirect
+        localStorage.removeItem('user'); // example
+        window.location.href = '/login';
+        return null;
+      default:
+        return <DashboardComponent />;
+    }
+  };
+
   return (
     <div className="dashboard-container">
       {/* Sidebar */}
       <div className="sidebar">
-        {/* Logo */}
         <div className="sidebar-header">
           <div className="sidebar-logo">
             <Package />
@@ -67,29 +90,27 @@ const Dashboard = () => {
           <span className="sidebar-title">MEDStock</span>
         </div>
 
-        {/* Navigation */}
         <nav className="sidebar-nav">
           {sidebarItems.map((item, index) => (
-            <a
+            <button
               key={index}
-              href="#"
-              className={`nav-item ${item.active ? 'active' : ''}`}
+              className={`nav-item ${selectedView === item.label ? 'active' : ''}`}
+              onClick={() => setSelectedView(item.label)}
             >
               <item.icon />
               {item.label}
-            </a>
+            </button>
           ))}
         </nav>
       </div>
 
       {/* Main Content */}
       <div className="main-content">
-        {/* Header */}
         <div className="header">
           <div className="header-content">
             <div>
               <h1 className="header-title">
-                Bienvenue <span className="name">Mohamed</span>
+                Bienvenue <span className="name">{userName || 'Utilisateur'}</span>
               </h1>
             </div>
             <div className="header-actions">
@@ -108,9 +129,10 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <DashboardComponent/>
 
-        
+        <div className="main-view">
+          {renderContent()}
+        </div>
       </div>
     </div>
   );
