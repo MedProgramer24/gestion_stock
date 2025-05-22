@@ -15,10 +15,11 @@ import {
 } from 'lucide-react';
 import './Dashboard.css';
 import DashboardComponent from '../../components/Dashboard/DashboardComponent';
+import Stock from '../../components/Stock/Stock';
 
 const Dashboard = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('user');
   const [selectedView, setSelectedView] = useState('Dashboard');
 
   useEffect(() => {
@@ -56,7 +57,7 @@ const Dashboard = () => {
       case 'Dashboard':
         return <DashboardComponent />;
       case 'Stock':
-        return <div>Contenu de Stock</div>;
+        return <Stock/>;
       case 'Gestion Catégories':
         return <div>Contenu de Gestion Catégories</div>;
       case 'Gestion Départements':

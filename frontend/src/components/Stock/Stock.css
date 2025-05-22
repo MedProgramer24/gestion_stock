@@ -1,0 +1,174 @@
+/* General Container Styles */
+.stock-container {
+  padding: 24px;
+  background-color: #f4f4f5;
+  min-height: 100vh;
+}
+
+/* Header Section Styles */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.date-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-picker input {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 8px;
+  width: 120px;
+}
+
+.print-button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.print-button:hover {
+  background-color: #2563eb;
+}
+
+/* Warning Button Styles */
+.warning-button {
+  background-color: #f97316;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.warning-button:hover {
+  background-color: #ea580c;
+}
+
+/* Add Button Container Styles */
+.add-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.add-button {
+  background-color: #10b981;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #059669;
+}
+
+/* Table Container Styles */
+.table-container {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.search-container {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-input {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 8px;
+  width: 25%;
+}
+
+.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.stock-table th,
+.stock-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.stock-table th {
+  background-color: #e5e7eb;
+}
+
+.stock-table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Action Buttons Styles */
+.edit-button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.edit-button:hover {
+  background-color: #2563eb;
+}
+
+.delete-button {
+  background-color: #ef4444;
+  color: white;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.delete-button:hover {
+  background-color: #dc2626;
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+  gap: 8px;
+}
+
+.pagination-button {
+  border: 1px solid #d1d5db;
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination-button.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.pagination-button:hover {
+  background-color: #e5e7eb;
+}
